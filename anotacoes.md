@@ -37,3 +37,10 @@ elm-repl
 ```
 elm-make Main.elm --warn
 ```
+
+## Usando a Api do Cuducos
+
+https://github.com/cuducos/vamos-aprender-elm-api
+
+https://vamosaprenderelm.herokuapp.com/api/comments/
+
