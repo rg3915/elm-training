@@ -8,7 +8,16 @@ import String
 
 -- Model
 
-initialModel = 0
+type alias Model =
+    { counter : Int
+    , clicks : Int
+    }
+
+initialModel : Model
+initialModel =
+    { counter = 0
+    , clicks = 0
+    }
 
 -- Update
 
@@ -16,24 +25,29 @@ type Msg
     = Increment
     | Decrement
 
-update : Msg -> Int -> Int
+update : Msg -> Model -> Model
 update msg model =
     case msg of
         Increment ->
-            model + 1
+            { counter = model.counter + 1
+            , clicks = model.clicks + 1
+            }
 
         Decrement ->
-            model - 1
+            { counter = model.counter - 1
+            , clicks = model.clicks + 1
+            }
 
 -- View
 
-view : Int -> Html.Html Msg
-view num =
+view : Model -> Html.Html Msg
+view model =
     div
         []
         [ button [ onClick Decrement ] [ text "-" ]
-        , h1 [] [ text <| toString num ]
+        , h1 [] [ text <| toString model.counter ]
         , button [ onClick Increment ] [ text "+" ]
+        , (toString model.clicks) ++ " clicks" |> text
         ]
 
 
