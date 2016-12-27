@@ -8,7 +8,5 @@ view name =
 
 
 main =
-    view "Regis"
-        |> String.toUpper
-        |> Html.text
+    Html.text (String.toUpper (view "Regis"))
 
