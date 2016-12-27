@@ -19,3 +19,21 @@ elm-make
 touch Main.elm
 elm-reactor
 ```
+
+## Console
+
+```
+elm-repl
+```
+
+```
+> add x y = x + y
+> add 41 1
+> :exit
+```
+
+## Compilador
+
+```
+elm-make Main.elm --warn
+```
