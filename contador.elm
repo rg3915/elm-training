@@ -27,16 +27,16 @@ type Msg
 
 update : Msg -> Model -> Model
 update msg model =
-    case msg of
-        Increment ->
-            { counter = model.counter + 1
-            , clicks = model.clicks + 1
-            }
+    let
+        newModel =
+            { model | clicks = model.clicks + 1 }
+    in
+        case msg of
+            Increment ->
+                { newModel | counter = model.counter + 1 }
 
-        Decrement ->
-            { counter = model.counter - 1
-            , clicks = model.clicks + 1
-            }
+            Decrement ->
+                { newModel | counter = model.counter - 1 }
 
 -- View
 
