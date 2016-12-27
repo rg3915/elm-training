@@ -1,8 +1,8 @@
 module Main exposing( .. )
 
-import Html exposing (div, ul, li, text, button)
-import Html.Attributes exposing (class)
+import Html exposing (div, h1, text, button)
 import Html.App
+import Html.Events exposing (onClick)
 import String
 
 
@@ -12,19 +12,29 @@ initialModel = 0
 
 -- Update
 
+type Msg
+    = Increment
+    | Decrement
+
+update : Msg -> Int -> Int
 update msg model =
-    model
+    case msg of
+        Increment ->
+            model + 1
+
+        Decrement ->
+            model - 1
 
 -- View
 
-view : Int -> Html.Html msg
+view : Int -> Html.Html Msg
 view num =
-    ul
-        [ class "menu" ]
-        [ li [] [ text "Home" ]
-        , li [] [ text "Contact" ]
+    div
+        []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , h1 [] [ text <| toString num ]
+        , button [ onClick Increment ] [ text "+" ]
         ]
-    Html.text (toString num)
 
 
 -- Init
